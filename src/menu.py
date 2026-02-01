@@ -4,24 +4,25 @@ class MenuPage(ctk.CTkFrame):
     def __init__(self, parent, controller):
         super().__init__(parent)
 
-        def show_toast():
-            toast = ctk.CTkToplevel(self)
-            toast.overrideredirect(True)  # no title bar
-            toast.geometry("250x80+20+220")
+
+
+        def show_toast(text):
+            toast = ctk.CTkFrame(self, corner_radius=10)
+            toast.place(relx=0.5, rely=0.9, anchor="center")
 
             label = ctk.CTkLabel(
                 toast,
-                text="Coming Soon....",
+                text=text,
                 font=ctk.CTkFont(size=14)
             )
-            label.pack(expand=True, padx=20, pady=20)
+            label.pack(padx=20, pady=10)
 
-            toast.after(3000, toast.destroy)
+            # auto remove after 3 seconds
+            self.after(3000, toast.destroy)
 
-            # need to fix the toast
 
         def soon():
-            show_toast()
+            show_toast("Coming Soon..")
         def connect():
             controller.show_page("dots")
         def soduko():
@@ -35,20 +36,13 @@ class MenuPage(ctk.CTkFrame):
         h3.pack(pady=(20, 5))
 
         btn1 = ctk.CTkButton(self, height=50, width=180, font=("Roboto", 16, "bold"), text="Connect The Dots", fg_color="black", hover_color="grey",text_color="white", command=connect)
-        btn2 = ctk.CTkButton(self, height=50, width=180, font=("Roboto", 16, "bold"), text="Soduko", fg_color="black", hover_color="grey",text_color="white", command=soduko)
+        btn2 = ctk.CTkButton(self, height=50, width=180, font=("Roboto", 16, "bold"), text="Sudoku", fg_color="black", hover_color="grey",text_color="white", command=soduko)
         btn3 = ctk.CTkButton(self, height=50, width=180, font=("Roboto", 16, "bold"), text="Coming Soon...", fg_color="black", hover_color="grey",text_color="white", command=soon)
 
 
         btn1.pack(padx=25, pady=(40,10))
         btn2.pack(padx=25, pady=10)
         btn3.pack(padx=25, pady=10)
-
-
-        
-
-
-
-
 
 
 

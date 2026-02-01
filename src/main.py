@@ -1,6 +1,10 @@
 import customtkinter as ctk
 from menu import MenuPage
-from dots import DotsPage
+from solution import SolutionPage
+from connectdots.dots import DotsPage
+from connectdots.six import SixPage
+from connectdots.seven import SevenPage
+from connectdots.eight import EightPage
 from sudoku import SudokuPage
 
 class App(ctk.CTk):
@@ -8,7 +12,7 @@ class App(ctk.CTk):
         super().__init__()
 
         self.title("Connected-Dots")
-        self.geometry("600x500")
+        self.geometry("600x650")
         self.container = ctk.CTkFrame(self)
         self.container.pack(fill="both", expand=True)
         self.resizable(False, False)
@@ -22,6 +26,10 @@ class App(ctk.CTk):
         self.pages["menu"] = MenuPage(self.container, self)
         self.pages["dots"] = DotsPage(self.container, self)
         self.pages["sudoku"] = SudokuPage(self.container, self)
+        self.pages["six"] = SixPage(self.container, self)
+        self.pages["seven"] = SevenPage(self.container, self)
+        self.pages["eight"] = EightPage(self.container, self)
+        self.pages["solution"] = SolutionPage(self.container, self)
 
         for page in self.pages.values():
             page.place(relwidth=1, relheight=1)

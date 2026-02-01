@@ -3,12 +3,12 @@ from PIL import Image
 import cv2
 from tkinter import filedialog
 
-class SudokuPage(ctk.CTkFrame):
+class SixPage(ctk.CTkFrame):
     def __init__(self, parent, controller):
         super().__init__(parent)
 
         def back():
-            controller.show_page("menu")
+            controller.show_page("dots")
 
         def openImg():
             window_name = "Camera - Press C to Capture | Q to Quit"
@@ -72,13 +72,11 @@ class SudokuPage(ctk.CTkFrame):
             image_label.configure(image=ctk_img)
             image_label.image = ctk_img
 
-        def solve():
-            controller.show_page("solution")
 
-
-
-        h1 = ctk.CTkLabel(self, text="Sudoku Solver", font=("Arial", 32, "bold"))
+        h1 = ctk.CTkLabel(self, text="Connect The Dots", font=("Arial", 32, "bold"))
+        h2 = ctk.CTkLabel(self, text="6x6", font=("Arial", 16))
         h1.pack(pady=(15, 2))
+        h2.pack(pady=(2, 20))
 
         btn1 = ctk.CTkButton(self, height=30, width=120, font=("Roboto", 12, "bold"), text="Open Camera", fg_color="black", hover_color="grey",text_color="white", command=openImg)
         btn2 = ctk.CTkButton(self, height=30, width=120, font=("Roboto", 12, "bold"), text="Upload Image", fg_color="black", hover_color="grey",text_color="white", command=uploadImg)
@@ -90,9 +88,6 @@ class SudokuPage(ctk.CTkFrame):
         
         image_label = ctk.CTkLabel(self, text="")
         image_label.pack(pady=20)
-
-        solvebtn = ctk.CTkButton(self, height=30, width=120, font=("Roboto", 12, "bold"), text="Solve", fg_color="black", hover_color="grey",text_color="white", command=solve)
-        solvebtn.pack(pady=(320, 0))
 
         bottom_bar = ctk.CTkFrame(self, height=25)
         bottom_bar.pack(side="bottom", fill="x")
